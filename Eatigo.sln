@@ -3,13 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eatigo.Eatilink.Api", "src\Eatigo.Eatilink.Api\Eatigo.Eatilink.Api.csproj", "{2156251B-2286-446F-A438-ADAD72F2DA24}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{55A7A9B0-5657-4D3D-A685-E3AD8A41F73B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{EC52F8A0-6B05-422E-9161-90B749327ED9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2D59B0D6-FE76-4741-A575-6B75700B516B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain", "domain", "{442D0781-1148-400F-8EE3-1A837F8CD418}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{905B8F27-33DE-41F3-9656-B5DC553B0E88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{FB62D458-2D79-4420-98FE-712503D7D4E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{B1A429BE-5EB4-4D6D-B973-76BB9C8F26BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "security", "security", "{DD575A21-C1F3-4824-BC1F-A20F810B406B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Api", "src\domain\core\Eatigo.Eatilink.Api\Eatigo.Eatilink.Api.csproj", "{07BBB97E-1B39-4088-8BC0-AE8BD6EEDF35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,16 +27,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2156251B-2286-446F-A438-ADAD72F2DA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2156251B-2286-446F-A438-ADAD72F2DA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2156251B-2286-446F-A438-ADAD72F2DA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2156251B-2286-446F-A438-ADAD72F2DA24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07BBB97E-1B39-4088-8BC0-AE8BD6EEDF35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07BBB97E-1B39-4088-8BC0-AE8BD6EEDF35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07BBB97E-1B39-4088-8BC0-AE8BD6EEDF35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07BBB97E-1B39-4088-8BC0-AE8BD6EEDF35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2156251B-2286-446F-A438-ADAD72F2DA24} = {55A7A9B0-5657-4D3D-A685-E3AD8A41F73B}
+		{442D0781-1148-400F-8EE3-1A837F8CD418} = {55A7A9B0-5657-4D3D-A685-E3AD8A41F73B}
+		{905B8F27-33DE-41F3-9656-B5DC553B0E88} = {55A7A9B0-5657-4D3D-A685-E3AD8A41F73B}
+		{FB62D458-2D79-4420-98FE-712503D7D4E8} = {442D0781-1148-400F-8EE3-1A837F8CD418}
+		{B1A429BE-5EB4-4D6D-B973-76BB9C8F26BC} = {442D0781-1148-400F-8EE3-1A837F8CD418}
+		{DD575A21-C1F3-4824-BC1F-A20F810B406B} = {442D0781-1148-400F-8EE3-1A837F8CD418}
+		{07BBB97E-1B39-4088-8BC0-AE8BD6EEDF35} = {B1A429BE-5EB4-4D6D-B973-76BB9C8F26BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0572618A-6343-4E2A-9C04-36E92B7D8A8B}
