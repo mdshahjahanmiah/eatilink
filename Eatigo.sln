@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eatigo.Eatilink.Api", "src\Eatigo.Eatilink.Api\Eatigo.Eatilink.Api.csproj", "{2156251B-2286-446F-A438-ADAD72F2DA24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{55A7A9B0-5657-4D3D-A685-E3AD8A41F73B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{EC52F8A0-6B05-422E-9161-90B749327ED9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2D59B0D6-FE76-4741-A575-6B75700B516B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2156251B-2286-446F-A438-ADAD72F2DA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2156251B-2286-446F-A438-ADAD72F2DA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2156251B-2286-446F-A438-ADAD72F2DA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2156251B-2286-446F-A438-ADAD72F2DA24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2156251B-2286-446F-A438-ADAD72F2DA24} = {55A7A9B0-5657-4D3D-A685-E3AD8A41F73B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0572618A-6343-4E2A-9C04-36E92B7D8A8B}
+	EndGlobalSection
+EndGlobal
