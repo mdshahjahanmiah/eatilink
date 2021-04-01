@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Test.Unit",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Security", "src\domain\security\Eatigo.Eatilink.Security\Eatigo.Eatilink.Security.csproj", "{F646AE3C-B269-4473-ABDD-292729FED336}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eatigo.Eatilink.Domain", "src\domain\core\Eatigo.Eatilink.Domain\Eatigo.Eatilink.Domain.csproj", "{63B9DEA4-EC1C-4F80-9100-3C27D1CE409F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{F646AE3C-B269-4473-ABDD-292729FED336}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F646AE3C-B269-4473-ABDD-292729FED336}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F646AE3C-B269-4473-ABDD-292729FED336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63B9DEA4-EC1C-4F80-9100-3C27D1CE409F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63B9DEA4-EC1C-4F80-9100-3C27D1CE409F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63B9DEA4-EC1C-4F80-9100-3C27D1CE409F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63B9DEA4-EC1C-4F80-9100-3C27D1CE409F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{B62D67E7-1FB6-478E-8A7A-58E78A658CEE} = {1F7C397B-7B8B-4367-B8D2-267DCE2CCEF6}
 		{E55E12A3-3036-45BD-9ED7-6BD3C162056A} = {1F7C397B-7B8B-4367-B8D2-267DCE2CCEF6}
 		{F646AE3C-B269-4473-ABDD-292729FED336} = {DD575A21-C1F3-4824-BC1F-A20F810B406B}
+		{63B9DEA4-EC1C-4F80-9100-3C27D1CE409F} = {B1A429BE-5EB4-4D6D-B973-76BB9C8F26BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0572618A-6343-4E2A-9C04-36E92B7D8A8B}

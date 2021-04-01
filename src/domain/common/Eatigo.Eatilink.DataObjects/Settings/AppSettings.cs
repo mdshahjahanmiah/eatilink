@@ -8,5 +8,6 @@ namespace Eatigo.Eatilink.DataObjects.Settings
     {
         public DatabaseSettings DatabaseSettings { get; set; }
         public Token JsonWebTokens { get; set; }
+        public MemoryCache MemoryCache { get; set; }
     }
 }

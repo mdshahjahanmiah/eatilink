@@ -1,9 +1,12 @@
 using Eatigo.Eatilink.DataObjects.Settings;
+using Eatigo.Eatilink.Domain.Interfaces;
+using Eatigo.Eatilink.Domain.Services;
 using Eatigo.Eatilink.Security.Handlers;
 using Eatigo.Eatilink.Validator;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,6 +33,7 @@ namespace Eatigo.Eatilink.Api
             ConfigureSingletonServices(services);
             ConfigureTransientServices(services);
             ConfigureJwtAuthentication(services, settings);
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +71,7 @@ namespace Eatigo.Eatilink.Api
         {
             services.AddTransient(typeof(ILinkShortenerValidator), typeof(LinkShortenerValidator));
             services.AddTransient(typeof(IJwtTokenHandler), typeof(JwtTokenHandler));
+            services.AddTransient(typeof(IAutoRefreshingCacheService), typeof(AutoRefreshingCacheService));
         }
 
         private void ConfigureJwtAuthentication(IServiceCollection services, AppSettings appSettings)
