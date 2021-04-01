@@ -23,9 +23,9 @@ namespace Eatigo.Eatilink.Security.Handlers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, userId.ToString())
+                    new Claim("user_identity", userId.ToString())
                 }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddDays(30),
                 SigningCredentials = new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -61,7 +61,7 @@ namespace Eatigo.Eatilink.Security.Handlers
                     ClockSkew = TimeSpan.Zero
                 };
                 var claims = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken).Claims.ToList();
-                claimsIdentity = claims.FirstOrDefault(c => c.Type == "user_id").Value;
+                claimsIdentity = claims.FirstOrDefault(c => c.Type == "user_identity").Value;
                 return (true, claimsIdentity);
             }
             catch

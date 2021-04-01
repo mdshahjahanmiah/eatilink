@@ -52,11 +52,15 @@ namespace Eatigo.Eatilink.Api
             });
         }
 
-        private AppSettings GetAppConfigurationSection() => Configuration.GetSection("AppSettings").Get<AppSettings>();
+        private AppSettings GetAppConfigurationSection()
+        {
+            return Configuration.GetSection("AppSettings").Get<AppSettings>();
+        }
 
         private void ConfigureSingletonServices(IServiceCollection services)
         {
-            services.AddSingleton(GetAppConfigurationSection());
+            var settings = GetAppConfigurationSection();
+            services.AddSingleton(settings);
         }
 
         private void ConfigureTransientServices(IServiceCollection services)
