@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Eatigo.Eatilink.DataObjects.Models;
+using Eatigo.Eatilink.Validator;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Net.Http.Headers;
 
 namespace Eatigo.Eatilink.Api.Controllers
 {
@@ -11,9 +10,16 @@ namespace Eatigo.Eatilink.Api.Controllers
     [ApiController]
     public class LinkShortenerController : ControllerBase
     {
-        [HttpGet("shorten")]
-        public IActionResult LinkShortener() 
+        private readonly ILinkShortenerValidator _linkShortenerValidator;
+        public LinkShortenerController(ILinkShortenerValidator linkShortenerValidator)
         {
+            _linkShortenerValidator = linkShortenerValidator;
+        }
+        [HttpPost("shorten")]
+        public IActionResult LinkShortener(UrlDto model) 
+        {
+            var(statusCode, errorResult) = _linkShortenerValidator.PayloadValidator(Request.Headers[HeaderNames.Authorization], model.OriginalUrl, model.Domain);
+            if (statusCode != StatusCodes.Status200OK) return StatusCode(statusCode, errorResult);
             return StatusCode(StatusCodes.Status200OK, "Hasan");
         }
     }
