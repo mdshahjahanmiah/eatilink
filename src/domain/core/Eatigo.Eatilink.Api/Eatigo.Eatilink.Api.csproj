@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\common\Eatigo.Eatilink.DataObjects\Eatigo.Eatilink.DataObjects.csproj" />
-    <ProjectReference Include="..\..\common\Eatigo.Eatilink.Security\Eatigo.Eatilink.Security.csproj" />
     <ProjectReference Include="..\..\common\Eatigo.Eatilink.Validator\Eatigo.Eatilink.Validator.csproj" />
   </ItemGroup>
 

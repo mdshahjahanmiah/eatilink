@@ -9,9 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\security\Eatigo.Eatilink.Security\Eatigo.Eatilink.Security.csproj" />
     <ProjectReference Include="..\Eatigo.Eatilink.Common\Eatigo.Eatilink.Common.csproj" />
     <ProjectReference Include="..\Eatigo.Eatilink.DataObjects\Eatigo.Eatilink.DataObjects.csproj" />
-    <ProjectReference Include="..\Eatigo.Eatilink.Security\Eatigo.Eatilink.Security.csproj" />
   </ItemGroup>
 
 </Project>
