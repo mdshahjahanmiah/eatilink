@@ -17,6 +17,7 @@ namespace Eatigo.Eatilink.Infrastructure.Repository
             _mongoClient = new MongoClient(_appSettings.DatabaseSettings.ConnectionString);
             _database = _mongoClient.GetDatabase(_appSettings.DatabaseSettings.DatabaseName);
         }
+
         public async Task Add(T entity)
         {
             var collection = _database.GetCollection<T>(_appSettings.DatabaseSettings.CollectionName);

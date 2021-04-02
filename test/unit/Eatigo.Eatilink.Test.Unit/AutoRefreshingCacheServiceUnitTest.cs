@@ -1,7 +1,5 @@
 using Eatigo.Eatilink.Api;
-using Eatigo.Eatilink.Domain.Interfaces;
 using Eatigo.Eatilink.Test.Unit.DependencyResolver;
-using Eatigo.Eatilink.Validator;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,13 +19,6 @@ namespace Eatigo.Eatilink.Test.Unit.Security
         {
             var webHost = WebHost.CreateDefaultBuilder().UseStartup<Startup>().Build();
             _serviceProvider = new DependencyResolverHelper(webHost);
-        }
-
-        [Fact]
-        public void AutoRefreshingCache()
-        {
-            var autoRefreshingCacheService = _serviceProvider.GetService<IAutoRefreshingCacheService>();
-            //var result = autoRefreshingCacheService.GetUrlsAsync();
         }
 
         [Fact]

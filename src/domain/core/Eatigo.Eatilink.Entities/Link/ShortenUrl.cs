@@ -1,14 +1,11 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Eatigo.Eatilink.Entities.Link
 {
     public class ShortenUrl : BaseEntity
     {
         [BsonElement("UId")]
-        public int UniqueId { get; set; }
+        public long UniqueId { get; set; }
 
         [BsonElement("OriginalUrl")]
         public string OriginalUrl { get; set; }
@@ -18,6 +15,9 @@ namespace Eatigo.Eatilink.Entities.Link
 
         [BsonElement("Domain")]
         public string Domain { get; set; }
+
+        [BsonElement("ShortString")]
+        public string ShortString { get; set; }
 
         [BsonElement("CreateDate")]
         public string CreateDate { get; set; }
