@@ -1,6 +1,8 @@
 using Eatigo.Eatilink.DataObjects.Settings;
 using Eatigo.Eatilink.Domain.Interfaces;
+using Eatigo.Eatilink.Domain.Managers;
 using Eatigo.Eatilink.Domain.Services;
+using Eatigo.Eatilink.Infrastructure.Repository;
 using Eatigo.Eatilink.Security.Handlers;
 using Eatigo.Eatilink.Validator;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -72,6 +74,10 @@ namespace Eatigo.Eatilink.Api
             services.AddTransient(typeof(ILinkShortenerValidator), typeof(LinkShortenerValidator));
             services.AddTransient(typeof(IJwtTokenHandler), typeof(JwtTokenHandler));
             services.AddTransient(typeof(IAutoRefreshingCacheService), typeof(AutoRefreshingCacheService));
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient(typeof(IRepositoryLinkShortenUrl), typeof(LinkShortenUrlRepository));
+            services.AddTransient(typeof(ILinkShortenManager), typeof(LinkShortenManager));
+            services.AddTransient(typeof(ILinkShortenService), typeof(LinkShortenService));
         }
 
         private void ConfigureJwtAuthentication(IServiceCollection services, AppSettings appSettings)
