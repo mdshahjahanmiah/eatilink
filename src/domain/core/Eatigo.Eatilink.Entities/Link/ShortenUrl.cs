@@ -7,6 +7,9 @@ namespace Eatigo.Eatilink.Entities.Link
 {
     public class ShortenUrl : BaseEntity
     {
+        [BsonElement("UId")]
+        public int UniqueId { get; set; }
+
         [BsonElement("OriginalUrl")]
         public string OriginalUrl { get; set; }
 
@@ -18,5 +21,8 @@ namespace Eatigo.Eatilink.Entities.Link
 
         [BsonElement("CreateDate")]
         public string CreateDate { get; set; }
+
+        [BsonElement("ExpiryDate")]
+        public string ExpiryDate { get; set; }
     }
 }

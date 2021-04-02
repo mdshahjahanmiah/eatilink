@@ -39,8 +39,8 @@ namespace Eatigo.Eatilink.Domain.Services
                         
                         //settings = await GetSettingsFromRemoteLocation();
 
-                        settings = new ShortUrlRequest { OriginalUrl = "Hasan", UserId = "Hasan", Domain = "Hasan", CreateDate = "Hasan" };
-                        _memoryCache.Set(_appSettings.MemoryCache.CacheKey, settings, GetMemoryCacheEntryOptions(_appSettings.MemoryCache.RefreshTimeInSeconds));
+                        settings = new ShortUrlRequest { OriginalUrl = "Hasan", Domain = "Hasan" };
+                        _memoryCache.Set(_appSettings.MemoryCache.CacheKey, settings, GetMemoryCacheEntryOptions(_appSettings.MemoryCache.RefreshTimeInDays));
 
                         var test = _memoryCache.Get(_appSettings.MemoryCache.CacheKey);
                     }
@@ -76,7 +76,7 @@ namespace Eatigo.Eatilink.Domain.Services
                         
                         //var newValue = await GetSettingsFromRemoteLocation();
 
-                        var newValue = new ShortUrlRequest { OriginalUrl = "Hasan", UserId = "Hasan", Domain = "Hasan", CreateDate = "Hasan" };
+                        var newValue = new ShortUrlRequest { OriginalUrl = "Hasan", Domain = "Hasan"};
                         if (newValue != null)
                         {
                             _memoryCache.Set(key, newValue, GetMemoryCacheEntryOptions(expireInSeconds)); 
