@@ -28,8 +28,6 @@ namespace Eatigo.Eatilink.Test.Api
             ViewResult result = new ViewResult();
             try
             {
-
-
                 var linkShortenerValidator = _serviceProvider.GetService<ILinkShortenerValidator>();
                 var linkShortenManager = _serviceProvider.GetService<ILinkShortenManager>();
                 var logger = _serviceProvider.GetService<ILogger<LinkShortenerController>>();
@@ -45,7 +43,7 @@ namespace Eatigo.Eatilink.Test.Api
                 result = (ViewResult)controller.LinkShortener(model);
                 Assert.NotNull(result);
             }
-            catch 
+            catch
             {
                 Assert.True(result.StatusCode == null);
             }
