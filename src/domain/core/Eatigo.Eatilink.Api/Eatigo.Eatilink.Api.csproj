@@ -2,9 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Hasan Shahjahan</Authors>
+    <Product>URL Shortener</Product>
+    <Description>To convert a provided URL into a fictional,shortened URL.</Description>
+    <Copyright>Hasan Shahjahan</Copyright>
     <UserSecretsId>bf168920-4f6c-4295-a7a1-8e5295cd9f56</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
