@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\infrastructure\Eatigo.Eatilink.Infrastructure\Eatigo.Eatilink.Infrastructure.csproj" />
     <ProjectReference Include="..\..\common\Eatigo.Eatilink.DataObjects\Eatigo.Eatilink.DataObjects.csproj" />
     <ProjectReference Include="..\..\common\Eatigo.Eatilink.Validator\Eatigo.Eatilink.Validator.csproj" />
     <ProjectReference Include="..\Eatigo.Eatilink.Domain\Eatigo.Eatilink.Domain.csproj" />

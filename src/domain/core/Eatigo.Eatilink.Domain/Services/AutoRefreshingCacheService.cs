@@ -22,10 +22,10 @@ namespace Eatigo.Eatilink.Domain.Services
             _memoryCache = memoryCache;
         }
 
-        public async Task<UrlDto> GetUrlsAsync()
+        public async Task<ShortUrlRequest> GetUrlsAsync()
         {
             // Normal lock doesn't work in async code
-            if (!_memoryCache.TryGetValue(_appSettings.MemoryCache.CacheKey, out UrlDto settings))
+            if (!_memoryCache.TryGetValue(_appSettings.MemoryCache.CacheKey, out ShortUrlRequest settings))
             {
                 SemaphoreSlim certLock = locks.GetOrAdd(_appSettings.MemoryCache.CacheKey, k => new SemaphoreSlim(1, 1));
                 await certLock.WaitAsync();
@@ -39,7 +39,7 @@ namespace Eatigo.Eatilink.Domain.Services
                         
                         //settings = await GetSettingsFromRemoteLocation();
 
-                        settings = new UrlDto { OriginalUrl = "Hasan", UserId = "Hasan", Domain = "Hasan", ExpireDate = "Hasan" };
+                        settings = new ShortUrlRequest { OriginalUrl = "Hasan", UserId = "Hasan", Domain = "Hasan", CreateDate = "Hasan" };
                         _memoryCache.Set(_appSettings.MemoryCache.CacheKey, settings, GetMemoryCacheEntryOptions(_appSettings.MemoryCache.RefreshTimeInSeconds));
 
                         var test = _memoryCache.Get(_appSettings.MemoryCache.CacheKey);
@@ -76,7 +76,7 @@ namespace Eatigo.Eatilink.Domain.Services
                         
                         //var newValue = await GetSettingsFromRemoteLocation();
 
-                        var newValue = new UrlDto { OriginalUrl = "Hasan", UserId = "Hasan", Domain = "Hasan", ExpireDate = "Hasan" };
+                        var newValue = new ShortUrlRequest { OriginalUrl = "Hasan", UserId = "Hasan", Domain = "Hasan", CreateDate = "Hasan" };
                         if (newValue != null)
                         {
                             _memoryCache.Set(key, newValue, GetMemoryCacheEntryOptions(expireInSeconds)); 
