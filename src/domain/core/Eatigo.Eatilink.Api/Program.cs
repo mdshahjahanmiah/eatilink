@@ -1,26 +1,38 @@
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Serilog;
+using System.IO;
 
 namespace Eatigo.Eatilink.Api
 {
     public class Program
     {
+        private static string _environmentName;
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var webHost = BuildWebHost(args);
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{_environmentName}.json", optional: true, reloadOnChange: true)
+                .Build();
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(configuration)
+                .CreateLogger();
+            webHost.Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        public static IWebHost BuildWebHost(string[] args) =>
+             WebHost.CreateDefaultBuilder(args)
+                 .ConfigureLogging((hostingContext, config) =>
+                 {
+                     config.ClearProviders();
+                     _environmentName = hostingContext.HostingEnvironment.EnvironmentName;
+                 })
+                 .UseStartup<Startup>()
+                 .Build();
     }
 }

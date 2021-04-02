@@ -3,6 +3,7 @@ using Eatigo.Eatilink.DataObjects.Settings;
 using Eatigo.Eatilink.Domain.Interfaces;
 using Eatigo.Eatilink.Domain.Mappers;
 using Eatigo.Eatilink.Infrastructure.Repository;
+using Microsoft.Extensions.Logging;
 
 namespace Eatigo.Eatilink.Domain.Managers
 {
@@ -12,12 +13,14 @@ namespace Eatigo.Eatilink.Domain.Managers
         private readonly IRepositoryLinkShortenUrl _repository;
         private readonly ILinkShortenService _linkShortenService;
         private readonly IAutoRefreshingCacheService _autoRefreshingCacheService;
-        public LinkShortenManager(AppSettings appSettings, IRepositoryLinkShortenUrl repository, ILinkShortenService linkShortenService, IAutoRefreshingCacheService autoRefreshingCacheService)
+        private readonly ILogger<LinkShortenManager> _logger;
+        public LinkShortenManager(AppSettings appSettings, IRepositoryLinkShortenUrl repository, ILinkShortenService linkShortenService, IAutoRefreshingCacheService autoRefreshingCacheService, ILogger<LinkShortenManager> logger)
         {
             _appSettings = appSettings;
             _repository = repository;
             _linkShortenService = linkShortenService;
             _autoRefreshingCacheService = autoRefreshingCacheService;
+            _logger = logger;
         }
 
         public ShortUrlResponse Shorten(ShortUrlRequest model)
@@ -25,6 +28,7 @@ namespace Eatigo.Eatilink.Domain.Managers
             var shortUrl = _linkShortenService.GenerateShortUrl();
             var uniqueId = _linkShortenService.ShortUrlToId(shortUrl);
             var base62ShortUrl = _linkShortenService.IdToBase62(uniqueId);
+            _logger.LogInformation("[Link Shorten Manager] " + "Plain Short Url:" + shortUrl + " Unique Id:" + uniqueId + " Base62 Short Url:" + base62ShortUrl);
 
             var entity = ShortenUrlMapper.ToEntity(model, base62ShortUrl, uniqueId, _appSettings.MemoryCache.RefreshTimeInDays);
             var result = _repository.InsertAsync(entity);
