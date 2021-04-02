@@ -40,7 +40,7 @@ namespace Eatigo.Eatilink.Validator
                     return (statusCode, result);
                 }
             }
-            else if (string.IsNullOrEmpty(originalUrl))
+            if (string.IsNullOrEmpty(originalUrl))
             {
                 statusCode = StatusCodes.Status422UnprocessableEntity;
                 result = new ApplicationException { ErrorCode = ApplicationErrorCodes.OriginalUrl, Data = new ErrorData() { Field = "original_url", Message = ApplicationErrorCodes.GetMessage(ApplicationErrorCodes.OriginalUrl) } };

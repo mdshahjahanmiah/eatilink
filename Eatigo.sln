@@ -35,11 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Test.Unit",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Security", "src\domain\security\Eatigo.Eatilink.Security\Eatigo.Eatilink.Security.csproj", "{F646AE3C-B269-4473-ABDD-292729FED336}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eatigo.Eatilink.Domain", "src\domain\core\Eatigo.Eatilink.Domain\Eatigo.Eatilink.Domain.csproj", "{63B9DEA4-EC1C-4F80-9100-3C27D1CE409F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Domain", "src\domain\core\Eatigo.Eatilink.Domain\Eatigo.Eatilink.Domain.csproj", "{63B9DEA4-EC1C-4F80-9100-3C27D1CE409F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eatigo.Eatilink.Infrastructure", "src\infrastructure\Eatigo.Eatilink.Infrastructure\Eatigo.Eatilink.Infrastructure.csproj", "{969BE2F8-BBD5-4E8A-A185-BBD9E6211CDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Infrastructure", "src\infrastructure\Eatigo.Eatilink.Infrastructure\Eatigo.Eatilink.Infrastructure.csproj", "{969BE2F8-BBD5-4E8A-A185-BBD9E6211CDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eatigo.Eatilink.Entities", "src\domain\core\Eatigo.Eatilink.Entities\Eatigo.Eatilink.Entities.csproj", "{780E0EF9-CCE2-41E0-B3D7-36E9FC25DD96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Entities", "src\domain\core\Eatigo.Eatilink.Entities\Eatigo.Eatilink.Entities.csproj", "{780E0EF9-CCE2-41E0-B3D7-36E9FC25DD96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

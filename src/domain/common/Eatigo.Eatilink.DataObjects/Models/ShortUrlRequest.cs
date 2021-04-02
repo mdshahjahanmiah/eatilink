@@ -18,8 +18,6 @@ namespace Eatigo.Eatilink.DataObjects.Models
         {
             OriginalUrl = string.Empty;
             Domain = string.Empty;
-            UserId = string.Empty;
-            CreateDate = DateTime.Now.ToString();
         }
 
         /// <summary>
@@ -30,14 +28,7 @@ namespace Eatigo.Eatilink.DataObjects.Models
         ///</returns>
         [JsonPropertyName("original_url")]
         public string OriginalUrl { get; set; }
-        /// <summary>
-        ///     Sets the shorten url in the current url object.
-        /// </summary>
-        /// <returns>
-        ///     The shorten url in the current url.
-        ///</returns>
-        [JsonPropertyName("short_url")]
-        public string ShortUrl { get; set; }
+        
         /// <summary>
         ///     Gets and sets the domain in the current url object.
         /// </summary>
@@ -46,21 +37,5 @@ namespace Eatigo.Eatilink.DataObjects.Models
         ///</returns>
         [JsonPropertyName("domain")] 
         public string Domain { get; set; }
-        /// <summary>
-        ///     Gets and sets the user id or key in the current url object.
-        /// </summary>
-        /// <returns>
-        ///     The user id or key in the current url.
-        ///</returns>
-        [JsonPropertyName("user_id")] 
-        public string UserId { get; set; }
-        /// <summary>
-        ///     Gets and sets the expiration date in the current url object.
-        /// </summary>
-        /// <returns>
-        ///     The expiration date in the current url.
-        ///</returns>
-        [JsonPropertyName("create_date")] 
-        public string CreateDate { get; set; }
     }
 }

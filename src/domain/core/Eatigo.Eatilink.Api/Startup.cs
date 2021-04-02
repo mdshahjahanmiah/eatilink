@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Eatigo.Eatilink.Api
@@ -35,6 +37,7 @@ namespace Eatigo.Eatilink.Api
             ConfigureSingletonServices(services);
             ConfigureTransientServices(services);
             ConfigureJwtAuthentication(services, settings);
+            ConfigureSwaggerServices(services);
             services.AddMemoryCache();
         }
 
@@ -55,6 +58,12 @@ namespace Eatigo.Eatilink.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Eatilink API");
+
             });
         }
 
@@ -80,6 +89,49 @@ namespace Eatigo.Eatilink.Api
             services.AddTransient(typeof(ILinkShortenService), typeof(LinkShortenService));
         }
 
+        private static void ConfigureSwaggerServices(IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Swagger API",
+                        Description = "Eatilink API",
+                        Version = "v1"
+                    });
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = @"JWT Authorization header using the Bearer scheme.
+                      Enter 'Bearer' [space] and then your token in the text input below.
+                      Example: 'Bearer 12345abcdef'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                  {
+                    {
+                      new OpenApiSecurityScheme
+                      {
+                        Reference = new OpenApiReference
+                          {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                          },
+                          Scheme = "oauth2",
+                          Name = "Bearer",
+                          In = ParameterLocation.Header,
+
+                        },
+                        new List<string>()
+                      }
+                    });
+
+            });
+        }
         private void ConfigureJwtAuthentication(IServiceCollection services, AppSettings appSettings)
         {
             var key = Encoding.ASCII.GetBytes(appSettings.JsonWebTokens.Secret);
