@@ -7,6 +7,6 @@ namespace Eatigo.Eatilink.Validator
 {
     public interface ILinkShortenerValidator
     {
-        (int, ApplicationException) PayloadValidator(string accessToken, string originalUrl, string domain);
+        (int, ApplicationException) PayloadValidator(string accessToken, string originalUrl);
     }
 }

@@ -6,7 +6,6 @@ namespace Eatigo.Eatilink.DataObjects.Settings
 {
     public class MemoryCache
     {
-        public string CacheKey { get; set; }
         public int RefreshTimeInDays { get; set; }
     }
 }

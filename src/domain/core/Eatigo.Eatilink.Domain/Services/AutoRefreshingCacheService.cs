@@ -1,9 +1,9 @@
-﻿using Eatigo.Eatilink.DataObjects.Models;
-using Eatigo.Eatilink.DataObjects.Settings;
+﻿using Eatigo.Eatilink.DataObjects.Settings;
 using Eatigo.Eatilink.Domain.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Primitives;
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,28 +21,23 @@ namespace Eatigo.Eatilink.Domain.Services
             _appSettings = appSettings;
             _memoryCache = memoryCache;
         }
-
-        public async Task<ShortUrlRequest> GetUrlsAsync()
+        public Hashtable RefreshingCache(string originalUrl, string shortenUrl)
         {
             // Normal lock doesn't work in async code
-            if (!_memoryCache.TryGetValue(_appSettings.MemoryCache.CacheKey, out ShortUrlRequest settings))
+            if (!_memoryCache.TryGetValue(originalUrl, out Hashtable shortenUrlHashtable))
             {
-                SemaphoreSlim certLock = locks.GetOrAdd(_appSettings.MemoryCache.CacheKey, k => new SemaphoreSlim(1, 1));
-                await certLock.WaitAsync();
-
+                SemaphoreSlim certLock = locks.GetOrAdd(originalUrl, k => new SemaphoreSlim(1, 1));
+                certLock.WaitAsync();
                 try
                 {
-                    if (!_memoryCache.TryGetValue(_appSettings.MemoryCache.CacheKey, out settings))
+                    if (!_memoryCache.TryGetValue(originalUrl, out shortenUrlHashtable))
                     {
-                        // This method is not implemented because it can be anything.
-                        // The main part is that you want to cache an object.
-                        
-                        //settings = await GetSettingsFromRemoteLocation();
-
-                        settings = new ShortUrlRequest { OriginalUrl = "Hasan", Domain = "Hasan" };
-                        _memoryCache.Set(_appSettings.MemoryCache.CacheKey, settings, GetMemoryCacheEntryOptions(_appSettings.MemoryCache.RefreshTimeInDays));
-
-                        var test = _memoryCache.Get(_appSettings.MemoryCache.CacheKey);
+                        Hashtable hashtable = new Hashtable
+                        {
+                            { "OriginalUrl", originalUrl },
+                            { "ShortenUrl", shortenUrl }
+                        };
+                        _memoryCache.Set(originalUrl, hashtable, GetMemoryCacheEntryOptions(hashtable, _appSettings.MemoryCache.RefreshTimeInDays));
                     }
                 }
                 finally
@@ -50,18 +45,14 @@ namespace Eatigo.Eatilink.Domain.Services
                     certLock.Release();
                 }
             }
-            return settings;
+            return shortenUrlHashtable;
         }
 
-        private MemoryCacheEntryOptions GetMemoryCacheEntryOptions(int expireInSeconds = 3600)
+        private MemoryCacheEntryOptions GetMemoryCacheEntryOptions(Hashtable hashtable, int expireInDays = 1)
         {
-            var expirationTime = DateTime.Now.AddSeconds(expireInSeconds);
-            var expirationToken = new CancellationChangeToken(
-                new CancellationTokenSource(TimeSpan.FromSeconds(expireInSeconds + .01)).Token);
-
+            var expirationTime = DateTime.Now.AddDays(expireInDays);
             var options = new MemoryCacheEntryOptions();
             options.SetAbsoluteExpiration(expirationTime);
-            options.AddExpirationToken(expirationToken);
 
             options.PostEvictionCallbacks.Add(new PostEvictionCallbackRegistration()
             {
@@ -69,27 +60,18 @@ namespace Eatigo.Eatilink.Domain.Services
                 {
                     if (reason == EvictionReason.TokenExpired || reason == EvictionReason.Expired)
                     {
-                        // If newValue is not null - update, otherwise just refresh the old value
-                        // The condition by which you decide to update or refresh the data depends entirely on you
-                        // If you want a cache object that will never expire you can just make the following call:
-                        // memoryCache.Set(key, value, GetMemoryCacheEntryOptions(expireInSeconds));
-                        
-                        //var newValue = await GetSettingsFromRemoteLocation();
-
-                        var newValue = new ShortUrlRequest { OriginalUrl = "Hasan", Domain = "Hasan"};
+                        var newValue = hashtable;
                         if (newValue != null)
                         {
-                            _memoryCache.Set(key, newValue, GetMemoryCacheEntryOptions(expireInSeconds)); 
+                            _memoryCache.Set(key, newValue, GetMemoryCacheEntryOptions(hashtable, expireInDays));
                         }
                         else
                         {
-                            _memoryCache.Set(key, value, GetMemoryCacheEntryOptions(expireInSeconds)); 
+                            _memoryCache.Set(key, value, GetMemoryCacheEntryOptions(hashtable, expireInDays));
                         }
                     }
                 }
             });
-
-            var test = _memoryCache.Get(_appSettings.MemoryCache.CacheKey);
             return options;
         }
     }

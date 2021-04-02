@@ -27,7 +27,7 @@ namespace Eatigo.Eatilink.Test.Unit.Security
         public void AutoRefreshingCache()
         {
             var autoRefreshingCacheService = _serviceProvider.GetService<IAutoRefreshingCacheService>();
-            var result = autoRefreshingCacheService.GetUrlsAsync();
+            //var result = autoRefreshingCacheService.GetUrlsAsync();
         }
 
         [Fact]

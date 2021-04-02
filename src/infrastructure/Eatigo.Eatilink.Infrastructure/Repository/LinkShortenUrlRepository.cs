@@ -19,7 +19,8 @@ namespace Eatigo.Eatilink.Infrastructure.Repository
 
         public ShortenUrl GetUrlByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            var result = _repository.Get(c => c.OriginalUrl == id);
+            return result;
         }
     }
 }

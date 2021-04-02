@@ -23,7 +23,7 @@ namespace Eatigo.Eatilink.Test.Unit.Security
         public void EmptyOriginalUrl()
         {
             var linkShortenerValidator = _serviceProvider.GetService<ILinkShortenerValidator>();
-            var (statusCode, errorResult) = linkShortenerValidator.PayloadValidator(accessToken, string.Empty, string.Empty);
+            var (statusCode, errorResult) = linkShortenerValidator.PayloadValidator(accessToken, string.Empty);
             
             Assert.False(statusCode != StatusCodes.Status200OK);
         }
@@ -32,7 +32,7 @@ namespace Eatigo.Eatilink.Test.Unit.Security
         public void NotEmptyOriginalUrl()
         {
             var linkShortenerValidator = _serviceProvider.GetService<ILinkShortenerValidator>();
-            var (statusCode, errorResult) = linkShortenerValidator.PayloadValidator(accessToken, "https://eatigo.com/th/bangkok/en", string.Empty);
+            var (statusCode, errorResult) = linkShortenerValidator.PayloadValidator(accessToken, "https://eatigo.com/th/bangkok/en");
             
             Assert.True(statusCode == StatusCodes.Status200OK);
         }
@@ -41,7 +41,7 @@ namespace Eatigo.Eatilink.Test.Unit.Security
         public void InvalidOriginalUrl()
         {
             var linkShortenerValidator = _serviceProvider.GetService<ILinkShortenerValidator>();
-            var (statusCode, errorResult) = linkShortenerValidator.PayloadValidator(accessToken, "Hasan.https://eatigo.com/th/bangkok/en", string.Empty);
+            var (statusCode, errorResult) = linkShortenerValidator.PayloadValidator(accessToken, "Hasan.https://eatigo.com/th/bangkok/en");
             
             Assert.False(statusCode != StatusCodes.Status200OK);
         }
@@ -50,7 +50,7 @@ namespace Eatigo.Eatilink.Test.Unit.Security
         public void ValidOriginalUrl()
         {
             var linkShortenerValidator = _serviceProvider.GetService<ILinkShortenerValidator>();
-            var (statusCode, errorResult) = linkShortenerValidator.PayloadValidator(accessToken, "https://eatigo.com/th/bangkok/en", string.Empty);
+            var (statusCode, errorResult) = linkShortenerValidator.PayloadValidator(accessToken, "https://eatigo.com/th/bangkok/en");
             
             Assert.True(statusCode == StatusCodes.Status200OK);
         }

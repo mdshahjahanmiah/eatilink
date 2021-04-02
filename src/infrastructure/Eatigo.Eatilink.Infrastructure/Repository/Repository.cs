@@ -34,9 +34,10 @@ namespace Eatigo.Eatilink.Infrastructure.Repository
             return result;
         }
 
-        public IMongoCollection<T> Get(Expression<Func<T, bool>> predicate)
+        public T Get(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            var result= _database.GetCollection<T>(_appSettings.DatabaseSettings.CollectionName).Find(predicate).FirstOrDefault();
+            return result;
         }
 
         public Task Update(T entity)

@@ -1,10 +1,8 @@
 using Eatigo.Eatilink.Api;
-using Eatigo.Eatilink.DataObjects.Settings;
 using Eatigo.Eatilink.Security.Handlers;
 using Eatigo.Eatilink.Test.Unit.DependencyResolver;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using System;
 using Xunit;
 
 namespace Eatigo.Eatilink.Test.Unit.Security

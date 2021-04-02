@@ -36,6 +36,7 @@ namespace Eatigo.Eatilink.Api
         {
             var settings = GetAppConfigurationSection();
             services.AddControllers();
+            services.AddApiVersioning();
             ConfigureSingletonServices(services);
             ConfigureTransientServices(services);
             ConfigureJwtAuthentication(services, settings);

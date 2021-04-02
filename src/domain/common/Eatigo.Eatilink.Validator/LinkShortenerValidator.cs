@@ -18,7 +18,7 @@ namespace Eatigo.Eatilink.Validator
             _appSettings = appSettings;
         }
 
-        (int, ApplicationException) ILinkShortenerValidator.PayloadValidator(string accessToken, string originalUrl, string domain)
+        (int, ApplicationException) ILinkShortenerValidator.PayloadValidator(string accessToken, string originalUrl)
         {
             int statusCode = StatusCodes.Status200OK;
             ApplicationException result = null;
