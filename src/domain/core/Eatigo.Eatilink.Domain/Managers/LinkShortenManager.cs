@@ -33,7 +33,7 @@ namespace Eatigo.Eatilink.Domain.Managers
             var entity = ShortenUrlMapper.ToEntity(model, base62ShortUrl, uniqueId, _appSettings.MemoryCache.RefreshTimeInDays);
 
             var cacheResult = _autoRefreshingCacheService.RefreshingCache(entity.OriginalUrl, entity.ShortUrl);
-            if (cacheResult == null) 
+            if (cacheResult == null)
             {
                 var result = _repository.InsertAsync(entity);
                 _logger.LogInformation("[Link Shorten Manager][Shorten Url save to cahce memory and database, then return shorten url]");

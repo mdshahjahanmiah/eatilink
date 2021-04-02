@@ -8,7 +8,7 @@ namespace Eatigo.Eatilink.Domain.Mappers
 {
     public static class ShortenUrlMapper
     {
-        public static ShortenUrl ToEntity(this ShortUrlRequest model, string base62ShortUrl, int uniqueId, int days)
+        public static ShortenUrl ToEntity(this ShortUrlRequest model, string base62ShortUrl, long uniqueId, int days)
         {
             return new ShortenUrl()
             {
@@ -16,6 +16,7 @@ namespace Eatigo.Eatilink.Domain.Mappers
                 OriginalUrl = model.OriginalUrl,
                 ShortUrl = "https://eati.go" + "/" + base62ShortUrl,
                 Domain = "eati.go",
+                ShortString = base62ShortUrl,
                 CreateDate = DateTime.Now.ToString(),
                 ExpiryDate = DateTime.Now.AddDays(days).ToString()
             };

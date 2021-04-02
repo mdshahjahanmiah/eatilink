@@ -24,8 +24,7 @@ namespace Eatigo.Eatilink.Test.Unit.Security
         {
             var linkShortenerValidator = _serviceProvider.GetService<ILinkShortenerValidator>();
             var (statusCode, errorResult) = linkShortenerValidator.PayloadValidator(accessToken, string.Empty);
-            
-            Assert.False(statusCode != StatusCodes.Status200OK);
+            Assert.True(statusCode != StatusCodes.Status200OK);
         }
 
         [Fact]
