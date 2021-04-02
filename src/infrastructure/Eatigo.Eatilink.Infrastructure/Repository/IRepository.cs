@@ -10,7 +10,7 @@ namespace Eatigo.Eatilink.Infrastructure.Repository
     public interface IRepository<T> where T : class
     {
         IMongoCollection<T> Get();
-        IMongoCollection<T> Get(Expression<Func<T, bool>> predicate);
+        T Get(Expression<Func<T, bool>> predicate);
         Task Add(T entity);
         Task Delete(T entity);
         Task Update(T entity);

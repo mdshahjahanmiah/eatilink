@@ -1,15 +1,16 @@
-﻿using Eatigo.Eatilink.DataObjects.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Eatigo.Eatilink.DataObjects.Models;
 using Eatigo.Eatilink.Domain.Interfaces;
 using Eatigo.Eatilink.Validator;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
 
 namespace Eatigo.Eatilink.Api.Controllers
 {
-    [Route("[controller]")]
+    [ApiVersion("1")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class LinkShortenerController : ControllerBase
     {
@@ -22,6 +23,7 @@ namespace Eatigo.Eatilink.Api.Controllers
             _linkShortenManager = linkShortenManager;
             _logger = logger;
         }
+        
         [HttpPost("shorten")]
         public IActionResult LinkShortener(ShortUrlRequest model) 
         {
