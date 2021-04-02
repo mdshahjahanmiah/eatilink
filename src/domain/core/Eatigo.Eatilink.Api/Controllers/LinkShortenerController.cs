@@ -28,7 +28,7 @@ namespace Eatigo.Eatilink.Api.Controllers
         public IActionResult LinkShortener(ShortUrlRequest model) 
         {
             _logger.LogInformation("[Link Shortener] " + JsonConvert.SerializeObject(model));
-            var (statusCode, errorResult) = _linkShortenerValidator.PayloadValidator(Request.Headers[HeaderNames.Authorization], model.OriginalUrl, model.Domain);
+            var (statusCode, errorResult) = _linkShortenerValidator.PayloadValidator(Request.Headers[HeaderNames.Authorization], model.OriginalUrl);
 
             _logger.LogWarning("[Link Shortener] " + JsonConvert.SerializeObject(errorResult));
             if (statusCode != StatusCodes.Status200OK) return StatusCode(statusCode, errorResult);

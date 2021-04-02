@@ -14,8 +14,8 @@ namespace Eatigo.Eatilink.Domain.Mappers
             {
                 UniqueId = uniqueId,
                 OriginalUrl = model.OriginalUrl,
-                ShortUrl = "https://" + (string.IsNullOrEmpty(model.Domain) ? "eati.go" : model.Domain) + "/" + base62ShortUrl,
-                Domain = string.IsNullOrEmpty(model.Domain) ? "eati.go" : model.Domain,
+                ShortUrl = "https://eati.go" + "/" + base62ShortUrl,
+                Domain = "eati.go",
                 CreateDate = DateTime.Now.ToString(),
                 ExpiryDate = DateTime.Now.AddDays(days).ToString()
             };

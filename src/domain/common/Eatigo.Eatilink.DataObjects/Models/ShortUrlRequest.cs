@@ -17,7 +17,6 @@ namespace Eatigo.Eatilink.DataObjects.Models
         public ShortUrlRequest() 
         {
             OriginalUrl = string.Empty;
-            Domain = string.Empty;
         }
 
         /// <summary>
@@ -28,14 +27,5 @@ namespace Eatigo.Eatilink.DataObjects.Models
         ///</returns>
         [JsonPropertyName("original_url")]
         public string OriginalUrl { get; set; }
-        
-        /// <summary>
-        ///     Gets and sets the domain in the current url object.
-        /// </summary>
-        /// <returns>
-        ///     The domain in the current url.
-        ///</returns>
-        [JsonPropertyName("domain")] 
-        public string Domain { get; set; }
     }
 }
