@@ -10,6 +10,7 @@ namespace Eatigo.Eatilink.Domain.Interfaces
 {
     public interface IAutoRefreshingCacheService
     {
-        Hashtable RefreshingCache(string originalUrl, string shortenUrl);
+        Hashtable CheckCache(string originalUrl);
+        void SetCache(string originalUrl, string shortenUrl);
     }
 }

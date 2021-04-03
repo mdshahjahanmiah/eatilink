@@ -1,3 +1,4 @@
+using Eatigo.Eatilink.Api.Filters;
 using Eatigo.Eatilink.DataObjects.Settings;
 using Eatigo.Eatilink.Domain.Interfaces;
 using Eatigo.Eatilink.Domain.Managers;
@@ -35,6 +36,7 @@ namespace Eatigo.Eatilink.Api
         public void ConfigureServices(IServiceCollection services)
         {
             var settings = GetAppConfigurationSection();
+            services.AddMvc(options => options.Filters.Add(new GlobalExceptionFilter()));
             services.AddControllers();
             services.AddApiVersioning();
             ConfigureSingletonServices(services);

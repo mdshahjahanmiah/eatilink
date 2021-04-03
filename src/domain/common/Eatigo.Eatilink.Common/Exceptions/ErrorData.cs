@@ -7,6 +7,18 @@ namespace Eatigo.Eatilink.Common.Exceptions
 {
     public class ErrorData
     {
+        public ErrorData() 
+        {
+            Field = string.Empty;
+            Message = string.Empty;
+        }
+
+        public ErrorData(string field, string message)
+        {
+            Field = field;
+            Message = message;
+        }
+
         [JsonPropertyName("field")]
         public string Field { get; set; }
 
