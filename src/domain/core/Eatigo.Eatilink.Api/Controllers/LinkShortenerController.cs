@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
+using Eatigo.Eatilink.Api.Filters;
 
 namespace Eatigo.Eatilink.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [GlobalExceptionFilter]
     public class LinkShortenerController : ControllerBase
     {
         private readonly ILinkShortenerValidator _linkShortenerValidator;
@@ -23,9 +25,9 @@ namespace Eatigo.Eatilink.Api.Controllers
             _linkShortenManager = linkShortenManager;
             _logger = logger;
         }
-        
+
         [HttpPost("shorten")]
-        public IActionResult LinkShortener(ShortUrlRequest model) 
+        public IActionResult LinkShortener(ShortUrlRequest model)
         {
             _logger.LogInformation("[Link Shortener] " + JsonConvert.SerializeObject(model));
             var (statusCode, errorResult) = _linkShortenerValidator.PayloadValidator(Request.Headers[HeaderNames.Authorization], model.OriginalUrl);

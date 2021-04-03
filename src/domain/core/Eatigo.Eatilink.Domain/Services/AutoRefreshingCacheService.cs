@@ -15,13 +15,17 @@ namespace Eatigo.Eatilink.Domain.Services
         private readonly AppSettings _appSettings;
         private readonly IMemoryCache _memoryCache;
         private readonly ConcurrentDictionary<object, SemaphoreSlim> locks = new ConcurrentDictionary<object, SemaphoreSlim>();
-
         public AutoRefreshingCacheService(AppSettings appSettings, IMemoryCache memoryCache)
         {
             _appSettings = appSettings;
             _memoryCache = memoryCache;
         }
-        public Hashtable RefreshingCache(string originalUrl, string shortenUrl)
+        public Hashtable CheckCache(string originalUrl)
+        {
+            _memoryCache.TryGetValue(originalUrl, out Hashtable shortenUrlHashtable);
+            return shortenUrlHashtable;
+        }
+        public void SetCache(string originalUrl, string shortenUrl)
         {
             // Normal lock doesn't work in async code
             if (!_memoryCache.TryGetValue(originalUrl, out Hashtable shortenUrlHashtable))
@@ -45,9 +49,7 @@ namespace Eatigo.Eatilink.Domain.Services
                     certLock.Release();
                 }
             }
-            return shortenUrlHashtable;
         }
-
         private MemoryCacheEntryOptions GetMemoryCacheEntryOptions(Hashtable hashtable, int expireInDays = 1)
         {
             var expirationTime = DateTime.Now.AddDays(expireInDays);
