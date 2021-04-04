@@ -46,8 +46,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Test.Api", "test\api\Eatigo.Eatilink.Test.Api\Eatigo.Eatilink.Test.Api.csproj", "{EA3BA60B-ADA2-4F76-8794-808F1AB2626B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apispecification", "apispecification", "{678CC53C-E82A-4661-B389-87A87F2151B5}"
+	ProjectSection(SolutionItems) = preProject
+		doc\apispecification\Eatilink-API Specification.pdf = doc\apispecification\Eatilink-API Specification.pdf
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "releasenote", "releasenote", "{C2E7958D-ED3F-42AD-A6B4-97A46278E61B}"
+	ProjectSection(SolutionItems) = preProject
+		doc\releasenote\Eatilink-Release Note.pdf = doc\releasenote\Eatilink-Release Note.pdf
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "systemdesign", "systemdesign", "{C9999D35-D71F-4AA9-8F8C-EE28DB01728F}"
 	ProjectSection(SolutionItems) = preProject
@@ -55,8 +61,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "systemdesign", "systemdesig
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mastertestplan", "mastertestplan", "{A92E7E41-B12F-412D-9A31-A6B74BEAD5B0}"
+	ProjectSection(SolutionItems) = preProject
+		doc\mastertestplan\Eatilink-Master Test Plan.pdf = doc\mastertestplan\Eatilink-Master Test Plan.pdf
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", "{C7AC39E2-10CB-43EB-91DE-364F625E5A76}"
+	ProjectSection(SolutionItems) = preProject
+		doc\deployment\Eatilink-Installation and Deployment.pdf = doc\deployment\Eatilink-Installation and Deployment.pdf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
