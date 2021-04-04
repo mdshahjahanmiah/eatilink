@@ -8,7 +8,7 @@
     <Copyright>Hasan Shahjahan</Copyright>
     <UserSecretsId>bf168920-4f6c-4295-a7a1-8e5295cd9f56</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
+    <DockerfileContext>..\..\..\..</DockerfileContext>
     <Version>1.0.0</Version>
   </PropertyGroup>
 
