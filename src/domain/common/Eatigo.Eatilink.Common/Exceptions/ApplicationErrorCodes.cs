@@ -23,19 +23,19 @@ namespace Eatigo.Eatilink.Common.Exceptions
             switch (value)
             {
                 case InvalidToken:
-                    return "Specify Valid Access Token";
+                    return EatilinkErrorMessage.InvalidToken;
                 case OriginalUrl:
-                    return "Specify Valid Original Url";
+                    return EatilinkErrorMessage.OriginalUrl;
                 case InvalidUrl:
-                    return "Unable to shorten that link. It is not a valid url.";
+                    return EatilinkErrorMessage.InvalidUrl;
                 case DatabaseError:
-                    return "MongoDB configuration exception";
+                    return EatilinkErrorMessage.DatabaseError;
                 case InternalSeverError:
-                    return "An attempt to divide an integral or System.Decimal value by zero.";
+                    return EatilinkErrorMessage.InternalSeverError;
                 case Unauthorized:
-                    return "Operating system denies access.";
+                    return EatilinkErrorMessage.Unauthorized;
                 case NotFound:
-                    return "The requested resource does not exist on the server";
+                    return EatilinkErrorMessage.NotFound;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(value), value, null);
             }

@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Entities", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{8621FC36-8B11-4C5D-85C7-D0E2CFB3F07E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eatigo.Eatilink.Test.Api", "test\api\Eatigo.Eatilink.Test.Api\Eatigo.Eatilink.Test.Api.csproj", "{EA3BA60B-ADA2-4F76-8794-808F1AB2626B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eatigo.Eatilink.Test.Api", "test\api\Eatigo.Eatilink.Test.Api\Eatigo.Eatilink.Test.Api.csproj", "{EA3BA60B-ADA2-4F76-8794-808F1AB2626B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
