@@ -5,7 +5,6 @@ Eatilink are shortened links. This can begin with the eati.go
 # Token Authentication
 For token authentication, in every request API have to send JWT as Bearer in header Authorization like:
 ## Authorization: Bearer {{AccessToken}}
-## Authorization Bearer Token
 ## Security claims JSON Web Token (JWT)
 ## JOSE Header Algorithm HMAC SHA256 (Base64Url )
 ## JWS Payload Identity (Must Include user identity)
@@ -16,7 +15,6 @@ that token is valid. In case of an expired or invalid JWT, Eatilink API will ret
 
 # Shorten a Link
 POST/api/v{version}/LinkShortener/shorten
-Converts a long url into a fictional, shortened url.
 
 
 # Configuration
