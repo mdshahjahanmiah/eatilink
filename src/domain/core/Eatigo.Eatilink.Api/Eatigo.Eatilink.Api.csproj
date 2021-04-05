@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Hasan Shahjahan</Authors>
+    <Product>URL Shortener</Product>
+    <Description>To convert a provided URL into a fictional,shortened URL.</Description>
+    <Copyright>Hasan Shahjahan</Copyright>
+    <UserSecretsId>bf168920-4f6c-4295-a7a1-8e5295cd9f56</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..</DockerfileContext>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\infrastructure\Eatigo.Eatilink.Infrastructure\Eatigo.Eatilink.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\common\Eatigo.Eatilink.DataObjects\Eatigo.Eatilink.DataObjects.csproj" />
+    <ProjectReference Include="..\..\common\Eatigo.Eatilink.Validator\Eatigo.Eatilink.Validator.csproj" />
+    <ProjectReference Include="..\Eatigo.Eatilink.Domain\Eatigo.Eatilink.Domain.csproj" />
+  </ItemGroup>
+
+
+</Project>
